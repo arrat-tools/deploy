@@ -113,8 +113,6 @@ $ sudo reboot
 $ nvidia-smi
 ```
 
-> 📝 Tip: You can also use the [AWS Deep Learning AMI](https://aws.amazon.com/machine-learning/amis/) which includes drivers and popular ML frameworks preinstalled.
-
 ### Best Practices
 
 - **Tag instances** with project metadata for easier tracking.
