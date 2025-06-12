@@ -99,23 +99,13 @@ To use the GPU on a `g4dn.xlarge` instance, install the NVIDIA drivers and CUDA 
 #### Amazon Linux 2 Setup
 
 ```bash
-# Update and install dependencies
-sudo yum update -y
-sudo yum install -y kernel-devel-$(uname -r) gcc
-
-# Download NVIDIA driver (check latest version at: https://www.nvidia.com/Download/index.aspx)
-wget https://us.download.nvidia.com/XFree86/Linux-x86_64/525.105.17/NVIDIA-Linux-x86_64-525.105.17.run
-chmod +x NVIDIA-Linux-x86_64-525.105.17.run
-
-# Switch to runlevel 3 and install driver
-sudo systemctl isolate multi-user.target
-sudo ./NVIDIA-Linux-x86_64-525.105.17.run
-
-# Reboot
-sudo reboot
+# Update and install
+$ sudo apt update
+$ sudo apt install nvidia-driver-510 nvidia-utils-510
+$ sudo reboot
 
 # Confirm installation
-nvidia-smi
+$ nvidia-smi
 ```
 
 > 📝 Tip: You can also use the [AWS Deep Learning AMI](https://aws.amazon.com/machine-learning/amis/) which includes drivers and popular ML frameworks preinstalled.
