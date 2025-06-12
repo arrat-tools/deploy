@@ -71,6 +71,11 @@ The `g4dn.xlarge` instance type is ideal for:
 Visit the [AWS Service Quotas Console](https://console.aws.amazon.com/servicequotas/) and search for:
 - `Running On-Demand G and VT Instances`
 
+- ![image](https://github.com/user-attachments/assets/0dd994fb-6c09-4d84-b2d8-5ed956aad835)
+
+![image](https://github.com/user-attachments/assets/89aa77ae-041b-4226-8c0d-b00147fd12d2)
+
+
 Check the current quota for your region.
 
 #### Step 2: Submit a Limit Increase
@@ -96,7 +101,7 @@ Please grant access to run 2 g4dn.xlarge instances in the us-east-1 region.
 
 To use the GPU on a `g4dn.xlarge` instance, install the NVIDIA drivers and CUDA libraries.
 
-#### Amazon Linux 2 Setup
+#### Ubuntu Setup
 
 ```bash
 # Update and install
