@@ -18,53 +18,59 @@
 
 [![][back-to-top]](#readme-top)
 
+## Fork the repository
+
+To allow AWS to have access to the ARRAT frontend, fork the public [ARRAT repository][link-to-repo]
+
+![Fork the ARRAT frontend](/images/deploy-frontend-fork-repo.png)
+
 ## Deploying to AWS
 
 **Getting started**
 
-![Create new Amplify Application](/images/frontend-step-create-application.png)
-
 1. Navigate to Amplify console and press _create new app_
 
-**Choose code host**
+![Create new Amplify Application](/images/frontend-step-create-application.png)
 
-![Select source code host](/images/frontend-step-select-source.png)
+**Choose your git provider**
 
-1. Select your source code host
+1. Select your git provider
+2. Follow their permissions guide and remember to give permission to access the ARRAT repo
 
-**Selecting source code**
+![Select git provider](/images/frontend-step-select-repository.png)
+![Follow GitHub setup instructions](/images/frontend-step-github-auth.png)
 
-![Select code repository](/images/frontend-step-select-repository.png)
+**Selecting repository and branch**
 
-3a (_optional_): Allow authentication to source code for AWS
-
-3b: Select repository to host
+![Select repository and branch](/images/frontend-step-add-repository-and-branch.png)
 
 **Build settings**
 
-![Update Amplify build settings](/images/frontend-step-update-settings.png)
-
 1. Choose application name
-2. Add `pnpm build` for build script
+2. Add `pnpm build` for build script (if needed)
 3. Navigate to _Advanced Settings_
 4. Add _Environment Variables_
 
-   ```bash
-   # Standard Open Street Map tile set
-   NEXT_PUBLIC_TILE_SET_ATTRIBUTION=&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
-   NEXT_PUBLIC_TILE_SET_URL=https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+![Update Amplify build settings](/images/frontend-step-app-settings.png)
 
-   # Esri Satellite tile set
-   NEXT_PUBLIC_SATELLITE_TILE_SET_ATTRIBUTION=Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community
-   NEXT_PUBLIC_SATELLITE_TILE_SET_URL=https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
+```bash
+# Standard Open Street Map tile set
+NEXT_PUBLIC_TILE_SET_ATTRIBUTION=&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
+NEXT_PUBLIC_TILE_SET_URL=https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
 
-   SERVER_IMAGES_URL= # Add your server images url here (e.g., http://localhost:8080)
-   SERVER_IMAGES_REMOTE_PATTERN_PROTOCOL=https # Update to your server protocol
-   SERVER_IMAGES_REMOTE_PATTERN_HOST_NAME= # Add your server host name here (e.g., localhost/)
-   SERVER_IMAGES_REMOTE_PATTERN_PATHNAME= # Add your server path name here (e.g., /*/images/**)
+# Esri Satellite tile set
+NEXT_PUBLIC_SATELLITE_TILE_SET_ATTRIBUTION=Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community
+NEXT_PUBLIC_SATELLITE_TILE_SET_URL=https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
 
-   SERVER_SESSION_API_BASE_URL= # Add your API deployment URL from `deploying the api step`.
-   ```
+SERVER_IMAGES_URL= # Add your server images url here (e.g., https://images.<your endpoint>.com)
+SERVER_IMAGES_REMOTE_PATTERN_PROTOCOL=https # Update to your server protocol
+SERVER_IMAGES_REMOTE_PATTERN_HOST_NAME= # Add your server host name here (e.g., images.<your endpoint>.com/)
+SERVER_IMAGES_REMOTE_PATTERN_PATHNAME=/**/* # Add your server path name here (e.g., /**/*)
+
+SERVER_SESSION_API_BASE_URL= # Add your `WebEndpoint` API deployment URL from `deploying the api step`.
+```
+
+_Read more about Next.js `remote patterns` [here](https://nextjs.org/docs/14/app/api-reference/components/image#remotepatterns)_
 
 ### Continuous Deployment
 
@@ -108,7 +114,7 @@ For more troubleshooting tips, refer to the AWS Amplify Documentation.
 
 [installation-link]: https://github.com/arrat-tools/frontend/blob/main/README.md
 [installation-shield]: https://img.shields.io/badge/Docs-blue?style=flat-square&logo=readthedocs&color=3b82f6&labelColor=334155&logoColor=f5f5f5
-[license-link]: https://github.com/arrat-tools/frontend/blob/main/License
+[license-link]: https://github.com/arrat-tools/frontend/tree/main?tab=MIT-0-1-ov-file
 [license-shield]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square&color=3b82f6&labelColor=334155
 [back-to-top]: https://img.shields.io/badge/-Back_to_top-151515?style=flat-square
 [link-to-repo]: https://github.com/arrat-tools/frontend

@@ -8,7 +8,7 @@ You will need the following technologies to successfully deploy your system to A
 >
 > Learn the most up to date steps to set up the [AWS CLI][docs-aws-cli-download-link] by checking it out.
 
-**🚨 Remember:** Configure your profile locally following this [guide][docs-aws-profile-setup-link]. This will be used in the coming steps when deploying templates.
+**🚨 Remember:** Configure your profile locally following this [guide][docs-aws-profile-setup-link]. This will be used in the coming steps when deploying templates. We will reference this in later steps as `arrat-cli`.
 
 ### AWS SAM CLI
 
