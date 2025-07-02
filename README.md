@@ -23,4 +23,4 @@ Our guided deployments includes everything needed for setting up the infrastruct
 <!-- Link Groups -->
 
 [up-next-link]: https://github.com/arrat-tools/deploy/blob/main/guide/00-prerequisites.md
-[vehicle-installation-guide-link]: https://github.com/arrat-tools/deploy/blob/main/guide-vehicle-installation/00-prerequisites.md
+[vehicle-installation-guide-link]: https://github.com/arrat-tools/deploy/blob/main/guide-vehicle-installation/Install_Vehicle_Software.md
