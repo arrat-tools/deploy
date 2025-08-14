@@ -50,11 +50,11 @@ Follow the guided deployment instructions and configure you SAM deployment based
 - `Stack Name`: The CloudFormation stack to deploy the template to _(Default - tac-sessionmanager-api)_
 - `AWS Region`: The region to deploy the stack to _(Default - us-east-1)_
 - `Parameter StageName`: Unique environment for deployment set to `prod`, `stage`, `test`, or `dev` _(Default - dev)_
-- `Parameter UnitsS3Bucket`: S3 Bucket where all synced units from the vehicle are uploaded to
+- `Parameter UnitsS3Bucket`: S3 Bucket where all synced units from the vehicle are uploaded to. Should match the `SessionInputBucketName` from the Outputs when deploying the infrastructure.
 - `Parameter UnitsFolderName`: _Optional_ subfolder where all units are uploaded _(Default - '')_
-- `Parameter SessionsS3Bucket`: S3 Bucket where all created sessions are uploaded to
+- `Parameter SessionsS3Bucket`: S3 Bucket where all created sessions are uploaded to. Should match the `SessionOutputBucketName` from the Outputs when deploying the infrastructure.
 - `Parameter SessionsFolderName`: _Optional_ subfolder where all sessions are uploaded _(Default - '')_
-- `Parameter StateMachineRunPipelineName`: _Optional_ AWS StateMachine StepFunction to trigger when creating new sessions _(Default - 'SSM-runscript')_
+- `Parameter StateMachineRunPipelineName`: AWS StateMachine StepFunction to trigger when creating new sessions. Should match the `ARRATStateMachineName` from the Outputs when deploying the infrastructure. _(Default - 'SSM-runscript')_
 
 Continue answering the rest of the prompts and answer `y` when asked 'Deploy this changeset? [y/N]'
 
