@@ -62,15 +62,19 @@ NEXT_PUBLIC_TILE_SET_URL=https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
 NEXT_PUBLIC_SATELLITE_TILE_SET_ATTRIBUTION=Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community
 NEXT_PUBLIC_SATELLITE_TILE_SET_URL=https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
 
-SERVER_IMAGES_URL= # Add your server images url here (e.g., https://images.<your endpoint>.com)
+SERVER_IMAGES_URL= # Add your `CloudFrontDomain` from `deploying the infrastructure.` This should be prefixed with `https` (e.g., https://<your domain>)
 SERVER_IMAGES_REMOTE_PATTERN_PROTOCOL=https # Update to your server protocol
-SERVER_IMAGES_REMOTE_PATTERN_HOST_NAME= # Add your server host name here (e.g., images.<your endpoint>.com/)
+SERVER_IMAGES_REMOTE_PATTERN_HOST_NAME= # Add your `CloudFrontDomain` from `deploying the infrastructure.` This should be prefixed with `https` (e.g., <your domain>)
 SERVER_IMAGES_REMOTE_PATTERN_PATHNAME=/**/* # Add your server path name here (e.g., /**/*)
 
 SERVER_SESSION_API_BASE_URL= # Add your `WebEndpoint` API deployment URL from `deploying the api step`.
 ```
 
 _Read more about Next.js `remote patterns` [here](https://nextjs.org/docs/14/app/api-reference/components/image#remotepatterns)_
+
+**Deploy to Amplify**
+
+Review and confirm that the setup was correct then press the `Save and deploy` button.
 
 ### Continuous Deployment
 
