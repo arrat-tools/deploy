@@ -80,14 +80,27 @@ Using the IDs from the services set up above, this guide provides the steps for 
 >
 > If you are unfamiliar with the installation process of the AWS CLI, you can get started with the prerequisites by following the steps [here][back-to-prerequisites]
 
-1: Clone the repository. _Before starting the deployment, clone the [ARRAT Infrastructure repository](https://github.com/arrat-tools/infrastructure) to your local machine._
+1: Download and extract the release code. _Before starting the deployment, download the latest [ARRAT Infrastructure repository code](https://github.com/arrat-tools/infrastructure/releases) to your local machine._
+
+_The release code includes all needed templates, infrastructure code, and pre-trained PyTorch models that are not included in the repository._
 
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="/images/deploy-infra-clone-repo.png">
-    <img height="240" src="/images/deploy-infra-clone-repo.png" alt="Clone ARRAT Infrastructure repository">
+    <source media="(prefers-color-scheme: dark)" srcset="/images/deploy-infra-download-release-code.png">
+    <img height="240" src="/images/deploy-infra-download-release-code.png" alt="Download ARRAT Infrastructure release code">
   </picture>
 </div>
+
+Use your system's built in system to extract the files from the .zip or the .tar.gz file. If you are running this through the CLI, run the following command:
+
+_For extracting zip_
+```
+unzip ./release-v1.0.0.zip
+```
+_For extracting tar_
+```
+tar -xvzf ./release-v1.0.0.tar.gz
+```
 
 2: From the command line, navigate to the ec2 directory.
 
@@ -136,7 +149,7 @@ After the EC2 stack is deployed and the instance is created, the pipeline step f
 >
 > If you are unfamiliar with the installation process of the AWS CLI, you can get started with the prerequisites by following the steps [here][back-to-prerequisites]
 
-1: Clone the repository. This step should already be done if you deployed the EC2 instance through the cli.
+1: Download and extract the release code. This step should already be done if you deployed the EC2 instance through the cli.
 
 2: From the command line, navigate to the stepfunctions directory.
 
@@ -154,7 +167,8 @@ _If needed, update `arrat-cli` to the profile configured during the prerequisite
 
 > \[!NOTE]
 > 
-> Remember to keep the `SessionInputBucketName`, `SessionOutputBucketName`, and `ARRATStateMachineName` Outputs from the CloudFormation Stack ready since this will be used when deploying the API.
+> Remember to keep the `SessionOutputBucketName` Output from the CloudFormation Stack ready since this will be used when uploading ARRAT infrastructure code in the next step.
+> Also save the `SessionInputBucketName`, `SessionOutputBucketName`, and `ARRATStateMachineName` Outputs from the CloudFormation Stack ready since this will be used when deploying the API.
 > Also save the `CloudFrontDomain` Output since this will be used when deploying the frontend.
 
 ### Option 2: Deploy using AWS Console
@@ -174,8 +188,28 @@ _If needed, update `arrat-cli` to the profile configured during the prerequisite
 
 > \[!NOTE]
 > 
-> Remember to keep the `SessionInputBucketName`, `SessionOutputBucketName`, and `ARRATStateMachineName` Outputs from the CloudFormation Stack ready since this will be used when deploying the API.
+> Remember to keep the `ARRATInfrastructureCodeS3Uri` Output from the CloudFormation Stack ready since this will be used when uploading ARRAT infrastructure code in the next step.
+> Also save the `SessionInputBucketName`, `SessionOutputBucketName`, and `ARRATStateMachineName` Outputs from the CloudFormation Stack ready since this will be used when deploying the API.
 > Also save the `CloudFrontDomain` Output since this will be used when deploying the frontend.
+
+### Uploading ARRAT Infrastructure Code
+
+With the `ARRATInfrastructureCodeS3Uri` Output from the previous step, we will now upload the contents from the `arrat-infrastructure-code/` directory. This code will be used by the step function to process images and generate session outputs.
+
+We can upload these files through the AWS S3 Web Console or using the AWS CLI with the following command:
+
+```
+aws s3 cp "./arrat-infrastructure-code" "<value of ARRATInfrastructureCodeS3Uri>" --recursive --profile=arrat-cli
+```
+
+_If needed, update `arrat-cli` to the profile configured during the prerequisites step_
+
+### Retrieving Operator Credentials for uploading files to S3
+
+After the CloudFormation templates have been successfully deployed, the vehicle operator can begin uploading the files to S3 that will be processed by the pipeline.  S3 credentials created by the template are securely stored in AWS Secrets Manager.  In order to retrieve these credentials, an Administrator for your AWS account will need to share the Access Key and Secret Access Key that has been stored in Secrets Manager.  
+
+To retreive these keys, the administrator should navigate to AWS Secrets Manager, Secrets, and go to the /arratoperator/credentials/ArratOperator secret.  Select the secret and click Retrieve secret value.  The ACCESS_KEY and SECRET_KEY values should be shared with the vehicle operator.  
+
 
 ## Continue to deploying the [API][up-next-link]
 
