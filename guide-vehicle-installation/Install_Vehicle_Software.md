@@ -71,7 +71,7 @@ Navigate to the src directory and clone the Road Audit Data-Collection GUI softw
 
 ```bash
 cd ~/catkin_ws/src
-git clone https://github.com/arrat-tools/vehicle/ra-daq-gui.git
+git clone https://github.com/arrat-tools/vehicle.git
 ```
 
 ### 🛠️ Step 4: Build the Workspace Using catkin_make
@@ -219,13 +219,9 @@ The RA-DAQ-GUI package contains two main software components, data collection an
 
 ## Sync Script
 
-The road audit data acquisition GUI software comes with a script that allows the user to upload the collected data to the cloud. By default the script is located at:
+The road audit data acquisition GUI software comes with a script that allows the user to upload the collected data to the cloud.
 
-`<ros_workspace>/src/ra-daq-gui/scripts/data_sync.sh`
-
-Make sure the `sync_dir` variable in this script is the same as the same as configured in the GUI software above.
-
-See Sync Script guide for more details on how to execute data syncing.
+### Continue to the [Sync Script Guide][sync-script-link]
 
 ## References
 
@@ -236,3 +232,4 @@ See Sync Script guide for more details on how to execute data syncing.
 <!-- Link Groups -->
 
 [link-to-repo]: https://github.com/arrat-tools/vehicle
+[sync-script-link]: https://github.com/arrat-tools/deploy/blob/main/guide-vehicle-installation/data-sync-script.md
