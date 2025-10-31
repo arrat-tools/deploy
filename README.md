@@ -2,6 +2,14 @@
 
 _We offer two separate guides for `vehicle operators` and `system maintainers` to deploy the needed cloud infrastructure and in-vehicle setup. These two parts work together to make up the ARRAT system._
 
+## Setup / AWS Account
+
+We currently support documentation for deploying to `AWS`. To get started with AWS, follow the guide below.
+
+### Continue to the [AWS Setup Guide][aws-setup-link]
+
+<br />
+
 ## Setup / Vehicle Installation
 
 If you are a `vehicle operator` looking for setup and installation steps for your in-vehicle device, follow the guide below.
@@ -24,3 +32,4 @@ Our guided deployments includes everything needed for setting up the infrastruct
 
 [up-next-link]: https://github.com/arrat-tools/deploy/blob/main/guide/00-prerequisites.md
 [vehicle-installation-guide-link]: https://github.com/arrat-tools/deploy/blob/main/guide-vehicle-installation/Install_Vehicle_Software.md
+[aws-setup-link]: https://github.com/arrat-tools/deploy/blob/main/guide-aws-setup/00-setup-aws-account.md
