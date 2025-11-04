@@ -38,7 +38,7 @@ Make sure the `sync_dir` variable in this script is the same as the same as conf
 AWS_ACCESS_KEY_ID="<your access key id>" AWS_SECRET_ACCESS_KEY="<your secret access key>" ./data-sync.sh
 ```
 
-_You will need to grab `your access key id` and `secret access key` for your AWS Account before running the script.  These values are generated when executing the [infrastructure deployment][infrastructure-deployment-link] and are stored in AWS Secrets Manager._
+_You will need to grab `your access key id` and `secret access key` for your AWS Account before running the script.  These values are generated when executing the [infrastructure deployment][infrastructure-deployment-link] and are stored in AWS Secrets Manager.  The s3location value in the script is the S3 session input bucket created when the arrat-step-functions CloudFormation template is created during the [infrastructure deployment][infrastructure-deployment-link].  This value will be output by the CLI on successful template deployment and will be displayed in the command line as the SessionInputBucketName.  This value can also be obtained after pipeline creation by navigating to the CloudFormation console in AWS and selecting the arrat-step-functions stack.  Choose the Outputs tab and the required bucket name will be the value displayed with the SessionInputBucketName key._
 
 [![][back-to-top]](#readme-top)
 
