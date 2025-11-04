@@ -38,7 +38,7 @@ Make sure the `sync_dir` variable in this script is the same as the same as conf
 AWS_ACCESS_KEY_ID="<your access key id>" AWS_SECRET_ACCESS_KEY="<your secret access key>" ./data-sync.sh
 ```
 
-_You will need to grab `your access key id` and `secret access key` for your AWS Account before running the script.  These values are generated when executing the [infrastructure-deployment][infrastructure-deployment-link] and are stored in AWS Secrets Manager._
+_You will need to grab `your access key id` and `secret access key` for your AWS Account before running the script.  These values are generated when executing the [infrastructure deployment][infrastructure-deployment-link] and are stored in AWS Secrets Manager._
 
 [![][back-to-top]](#readme-top)
 
@@ -47,3 +47,4 @@ _You will need to grab `your access key id` and `secret access key` for your AWS
 [back-to-top]: https://img.shields.io/badge/-Back_to_top-151515?style=flat-square
 [docs-aws-cli-download-link]: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 [vehicle-installation-guide-link]: https://github.com/arrat-tools/deploy/blob/main/guide-vehicle-installation/Install_Vehicle_Software.md
+[infrastructure-deployment-link]: https://github.com/arrat-tools/deploy/blob/main/guide/01-deploy-the-infrastructure.md
