@@ -38,7 +38,7 @@ Make sure the `sync_dir` variable in this script is the same as the same as conf
 AWS_ACCESS_KEY_ID="<your access key id>" AWS_SECRET_ACCESS_KEY="<your secret access key>" ./data-sync.sh
 ```
 
-_You will need to grab `your access key id` and `secret access key` for you AWS Account before running the script._
+_You will need to grab `your access key id` and `secret access key` for your AWS Account before running the script.  These values are generated when executing the [infrastructure-deployment][infrastructure-deployment-link] and are stored in AWS Secrets Manager._
 
 [![][back-to-top]](#readme-top)
 
