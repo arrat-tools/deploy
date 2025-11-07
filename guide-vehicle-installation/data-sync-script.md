@@ -28,17 +28,29 @@ sudo /aws/install
 
 _If you want the files downloaded to the root directory remember to run `cd ~` beforehand._
 
-## Running the script
+## (Optional) Updating the script
 
-Make sure the `sync_dir` variable in this script is the same as the same as configured in the GUI software during the [vehicle installation guide][vehicle-installation-guide-link].
+You may have changed the `sync_dir` value within the `config/gui.yaml` during configuration of the GUI software in the the [vehicle installation guide][vehicle-installation-guide-link].
+
+If so, update the `sync_dir` variable in this script to match this value.
+
+## Running the script
 
 <b>Run the sync script by running:</b>
 
 ```bash
-AWS_ACCESS_KEY_ID="<your access key id>" AWS_SECRET_ACCESS_KEY="<your secret access key>" ./data-sync.sh
+AWS_ACCESS_KEY_ID="<your access key id>" AWS_SECRET_ACCESS_KEY="<your secret access key>" bash ./data-sync.sh "s3://tac-image-staging/"
 ```
 
-_You will need to grab `your access key id` and `secret access key` for your AWS Account before running the script.  These values are generated when executing the [infrastructure deployment][infrastructure-deployment-link] and are stored in AWS Secrets Manager.  The s3location value in the script is the S3 session input bucket created when the arrat-step-functions CloudFormation template is created during the [infrastructure deployment][infrastructure-deployment-link].  This value will be output by the CLI on successful template deployment and will be displayed in the command line as the SessionInputBucketName.  This value can also be obtained after pipeline creation by navigating to the CloudFormation console in AWS and selecting the arrat-step-functions stack.  Choose the Outputs tab and the required bucket name will be the value displayed with the SessionInputBucketName key._
+_You may need to update `s3://tac-image-staging/` to the `SessionInputBucketName` generated while deploying the Pipeline and Step Functions during the [infrastructure deployment][infrastructure-deployment-link]. Remember to put `s3://` before and `/` after the SessionInputBucketName_
+
+> \[!NOTE]
+>
+> You can grab `your access key id` and `secret access key` from the `/arratoperator/credentials/ArratOperator` secret. `your access key id = ACCESS_KEY` and `your secret access key = SECRET_KEY` from the stored secrets's SecretString. These values were generated while deploying the Pipeline and Step Functions during the [infrastructure deployment][infrastructure-deployment-link].
+> 
+> Navigate to the AWS Secrets Manager through the web portal or run `aws secretsmanager get-secret-value --secret-id /arratoperator/credentials/ArratOperator --profile arrat-cli` to get the values.
+>
+> _If needed, update arrat-cli to the profile configured during the prerequisites step_
 
 [![][back-to-top]](#readme-top)
 
